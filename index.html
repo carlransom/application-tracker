@@ -10,15 +10,24 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Applications" />
-    <meta name="description" content="Track every job application in one place: statuses, deadlines, and your week in review. Free to start, private by design, and installs on your phone like an app." />
+    <meta name="description" content="Track every job application in one place: statuses, deadlines, and interviews. Free to start, private by design, and installs on your phone like an app." />
     <meta name="keywords" content="job application tracker, track job applications, job search tracker, job search organizer" />
     <meta property="og:title" content="Job Application Tracker — Track Every Job Application in One Place" />
     <meta property="og:description" content="Track every job application, interview, and deadline in one installable web app. Free to start, private by design." />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="https://brave-flower-08f36030f.6.azurestaticapps.net/" />
+    <meta property="og:image" content="https://brave-flower-08f36030f.6.azurestaticapps.net/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Application Tracker — Every application, deadline, and follow-up, in one place." />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Job Application Tracker — Track Every Job Application in One Place" />
     <meta name="twitter:description" content="Track every job application, interview, and deadline in one installable web app. Free to start, private by design." />
-    <link rel="icon" href="data:," />
+    <meta name="twitter:image" content="https://brave-flower-08f36030f.6.azurestaticapps.net/og-image.png" />
+    <meta name="twitter:image:alt" content="Application Tracker — Every application, deadline, and follow-up, in one place." />
+    <link rel="icon" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -316,6 +325,19 @@
       .lp-closing .hero-note { color: var(--on-band-soft); }
       .lp-keywords { text-align: center; color: var(--ink-faint); font-size: 13px; padding: 0 22px 40px; margin: 0; }
       .lp-footer { text-align: center; color: var(--ink-faint); font-size: 13px; padding: 0 22px 44px; margin: 0; }
+      .lp-footer a { color: var(--ink-faint); text-decoration: underline; text-underline-offset: 2px; }
+      .lp-footer a:hover { color: var(--accent); }
+      .lp-shot { margin-top: 28px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 8px; box-shadow: var(--shadow); max-width: 460px; text-align: left; }
+      .lp-shot-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; }
+      .lp-shot-head b { font-size: 15px; }
+      .lp-shot-head span { font-size: 12px; font-weight: 700; color: var(--ink-faint); }
+      .lp-shot-row { display: flex; align-items: center; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); }
+      .lp-shot-main b { display: block; font-size: 14.5px; }
+      .lp-shot-main span { display: block; font-size: 13px; color: var(--ink-soft); }
+      .lp-shot-pill { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+      .lp-shot-pill.st-interview { background: var(--st-interview-bg); color: var(--st-interview-tx); }
+      .lp-shot-pill.st-screening { background: var(--st-screening-bg); color: var(--st-screening-tx); }
+      .lp-shot-pill.st-applied { background: var(--st-applied-bg); color: var(--st-applied-tx); }
       @media (max-width: 700px) {
         .lp-features, .lp-steps { grid-template-columns: 1fr; }
         .lp-section { padding: 44px 20px; }
@@ -723,6 +745,21 @@
           <button class="btn btn-hero-ghost lp-create" type="button">Create account</button>
         </div>
         <p class="hero-note">No sign-up needed to try the demo · Your data stays yours</p>
+        <div class="lp-shot" aria-label="Preview of the tracker dashboard">
+          <div class="lp-shot-head"><b>My applications</b><span>Demo preview</span></div>
+          <div class="lp-shot-row">
+            <div class="lp-shot-main"><b>Northwind Traders</b><span>Customer Support Specialist</span></div>
+            <span class="lp-shot-pill st-interview">Interview</span>
+          </div>
+          <div class="lp-shot-row">
+            <div class="lp-shot-main"><b>Brightpath Health</b><span>Service Desk Technician</span></div>
+            <span class="lp-shot-pill st-screening">Screening</span>
+          </div>
+          <div class="lp-shot-row">
+            <div class="lp-shot-main"><b>Acme Logistics</b><span>Operations Coordinator</span></div>
+            <span class="lp-shot-pill st-applied">Applied</span>
+          </div>
+        </div>
         <ul>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -788,7 +825,7 @@
         <div class="lp-features">
           <div class="lp-feature"><b>Track every application</b><p>Company, role, pay, location, status, and dates — every application on one searchable card.</p></div>
           <div class="lp-feature"><b>Never miss a deadline</b><p>Closing dates and next steps sit front and center on every card, with a live countdown.</p></div>
-          <div class="lp-feature"><b>See your week at a glance</b><p>The week-in-review timeline shows what you applied to, what you heard back on, and what&apos;s next.</p></div>
+          <div class="lp-feature"><b>Search everything</b><p>Find any application by company, role, or place in seconds — and filter by pipeline stage.</p></div>
           <div class="lp-feature"><b>Private by design</b><p>Sign in and your applications are yours alone. New accounts start empty — nothing is shared, nothing is public.</p></div>
           <div class="lp-feature"><b>Installs like an app</b><p>Add it to your home screen. It opens like a native app and keeps working offline.</p></div>
           <div class="lp-feature"><b>Built for the long hunt</b><p>Statuses from Started to Interview to Offer, Rejected, or Withdrawn — your full history, searchable whenever you need it.</p></div>
@@ -801,7 +838,7 @@
         <div class="lp-steps">
           <div class="lp-step"><span class="n">Step 1</span><b>Try the demo</b><p>Open the demo account and click around — sample applications included, no sign-up.</p></div>
           <div class="lp-step"><span class="n">Step 2</span><b>Add your applications</b><p>Sign in and add each role as you apply. It takes seconds.</p></div>
-          <div class="lp-step"><span class="n">Step 3</span><b>Update as you hear back</b><p>Move a card when a status changes. Your week-in-review builds itself.</p></div>
+          <div class="lp-step"><span class="n">Step 3</span><b>Update as you hear back</b><p>Move a card when a status changes. Your pipeline stays up to date.</p></div>
         </div>
       </section>
 
@@ -812,6 +849,8 @@
           <div class="lp-faq-item"><b>Is it free?</b><p>Yes — sign up and start tracking. No card required.</p></div>
           <div class="lp-faq-item"><b>Is my data private?</b><p>Yes. Your applications are tied to your account and visible only to you. The public demo uses separate sample data.</p></div>
           <div class="lp-faq-item"><b>Do I need to install anything?</b><p>No. It runs in the browser, and you can add it to your home screen to use it like an app.</p></div>
+          <div class="lp-faq-item"><b>Is it really free?</b><p>Yes — free to use, no card required, and there is no paid plan today.</p></div>
+          <div class="lp-faq-item"><b>Who made this?</b><p>Application Tracker was built by Carl Ransom while job hunting — the tracker he wanted for his own search, made available for anyone.</p></div>
         </div>
       </section>
 
@@ -825,7 +864,7 @@
       </section>
 
       <p class="lp-keywords">job application tracker &nbsp;·&nbsp; track job applications &nbsp;·&nbsp; job search tracker</p>
-      <p class="lp-footer">Application Tracker — free to start, private by design.</p>
+      <p class="lp-footer">Application Tracker — free to start, private by design. &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms</a></p>
     </div>
 
     <!-- ================= APP VIEW ================= -->
@@ -1432,6 +1471,12 @@
           }).catch(googleFailed);
         }
       });
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/sw.js").catch(function () {});
+        });
+      }
 
       document.querySelectorAll(".lp-demo").forEach(function (b) {
         b.addEventListener("click", function () { document.getElementById("demoBtn").click(); });
