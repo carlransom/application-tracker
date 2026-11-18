@@ -1468,6 +1468,20 @@
         }).catch(function (err) {
           if (err && err.code) showAuthError(firebaseErrorMessage(err));
         });
+        // If a redirect sign-in was started and no session appeared, say so
+        // instead of leaving the user on the landing page with no explanation.
+        var redirectWasPending = false;
+        try {
+          redirectWasPending = sessionStorage.getItem("at-redirect-pending") === "1";
+          sessionStorage.removeItem("at-redirect-pending");
+        } catch (e) {}
+        if (redirectWasPending) {
+          setTimeout(function () {
+            if (!session || session.mode !== "firebase") {
+              showAuthError("Google sign-in didn't finish — this browser blocks the redirect step. Try again, or sign in with email below.");
+            }
+          }, 8000);
+        }
         fbAuth.onAuthStateChanged(function (fbUser) {
           if (session && session.mode === "demo") return;
           if (fbUser) {
@@ -1557,32 +1571,37 @@
         provider.setCustomParameters({ prompt: "select_account" });
         btn.disabled = true;
         setAuthBusy(true);
-        // TEMPORARY diagnostic (Nov 18): ?forceRedirect=1 forces the redirect
-        // sign-in path on any device so the phone-only bug can be reproduced
-        // from a desktop browser. Remove after the redirect bug is fixed.
-        var forceRedirect = false;
-        try { forceRedirect = new URLSearchParams(window.location.search).get("forceRedirect") === "1"; } catch (e) {}
-        var useRedirect = forceRedirect || !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
         function googleFailed(err) {
           btn.disabled = false;
           setAuthBusy(false);
           showAuthError(firebaseErrorMessage(err));
         }
-        if (useRedirect) {
+        // Popup sign-in works everywhere. The redirect path silently fails in
+        // browsers that partition third-party storage: the auth handler cannot
+        // hand the result back to the app, so the user lands on the landing
+        // page with no error. Redirect is only a fallback when the popup
+        // itself is blocked.
+        function startRedirectFallback() {
+          try { sessionStorage.setItem("at-redirect-pending", "1"); } catch (e) {}
           fbAuth.signInWithRedirect(provider).catch(googleFailed);
-        } else {
-          fbAuth.signInWithPopup(provider).then(function (result) {
-            if (result && result.user) {
-              pendingDisplayName = result.user.displayName || "";
-              return ensureUserDoc(result.user).then(function () {
-                btn.disabled = false;
-                setAuthBusy(false);
-              });
-            }
-            btn.disabled = false;
-            setAuthBusy(false);
-          }).catch(googleFailed);
         }
+        fbAuth.signInWithPopup(provider).then(function (result) {
+          if (result && result.user) {
+            pendingDisplayName = result.user.displayName || "";
+            return ensureUserDoc(result.user).then(function () {
+              btn.disabled = false;
+              setAuthBusy(false);
+            });
+          }
+          btn.disabled = false;
+          setAuthBusy(false);
+        }).catch(function (err) {
+          if (err && err.code === "auth/popup-blocked") {
+            startRedirectFallback();
+          } else {
+            googleFailed(err);
+          }
+        });
       });
 
       if ("serviceWorker" in navigator) {
