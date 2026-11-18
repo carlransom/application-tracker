@@ -1557,7 +1557,12 @@
         provider.setCustomParameters({ prompt: "select_account" });
         btn.disabled = true;
         setAuthBusy(true);
-        var useRedirect = !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+        // TEMPORARY diagnostic (Nov 18): ?forceRedirect=1 forces the redirect
+        // sign-in path on any device so the phone-only bug can be reproduced
+        // from a desktop browser. Remove after the redirect bug is fixed.
+        var forceRedirect = false;
+        try { forceRedirect = new URLSearchParams(window.location.search).get("forceRedirect") === "1"; } catch (e) {}
+        var useRedirect = forceRedirect || !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
         function googleFailed(err) {
           btn.disabled = false;
           setAuthBusy(false);
