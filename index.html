@@ -149,7 +149,10 @@
 
       /* ---------- Auth view ---------- */
       .auth-wrap {
-        min-height: 100dvh;
+        /* Cap the hero height: on a very tall viewport (e.g. a phone
+           showing the desktop layout) 100dvh alone stretches the row
+           and leaves a giant empty band above/below the content. */
+        min-height: min(100dvh, 880px);
         display: grid;
         grid-template-columns: 1.05fr .95fr;
       }
