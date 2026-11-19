@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Connect Claude, ChatGPT, or Cursor to Application Tracker via MCP — your AI assistant can read your pipeline, add applications, and answer questions about your search." />
+    <title>Connect your AI agents — Application Tracker</title>
+    <link rel="icon" href="/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { color-scheme: light dark; --bg:#edf1ee; --band:#0c3830; --band-2:#0a2f28; --surface:#fff; --ink:#15211c; --ink-soft:#42534b; --line:#d7e0da; --accent:#0c7561; --on-band:#eef6f2; --on-band-soft:#a9c6bc; --code-bg:#0c3830; --code-ink:#eef6f2; }
+      @media (prefers-color-scheme: dark) { :root { --bg:#0a100e; --surface:#131c19; --ink:#e7efeb; --ink-soft:#b0c0b8; --line:#26332e; --accent:#3cc7ab; --code-bg:#071a16; } }
+      * { box-sizing: border-box; }
+      body { margin:0; background:var(--bg); color:var(--ink); font-family:"Manrope",system-ui,sans-serif; font-size:16px; line-height:1.6; }
+      header { background:linear-gradient(160deg,var(--band),var(--band-2)); color:var(--on-band); padding:28px 22px; }
+      header .in { max-width:720px; margin:0 auto; }
+      header a { color:var(--on-band); text-decoration:none; font-weight:800; font-size:17px; }
+      header p { margin:6px 0 0; color:var(--on-band-soft); font-size:14px; }
+      main { max-width:720px; margin:0 auto; padding:36px 22px 56px; }
+      h1 { font-size:28px; margin:0 0 8px; letter-spacing:-.02em; }
+      h2 { font-size:19px; margin:30px 0 8px; }
+      p, li { color:var(--ink-soft); }
+      p.lede { color:var(--ink-soft); margin:0 0 8px; }
+      ol, ul { padding-left:22px; }
+      li { margin-bottom:6px; }
+      a { color:var(--accent); }
+      .linkbox { display:flex; gap:8px; align-items:stretch; background:var(--code-bg); color:var(--code-ink); border-radius:12px; padding:12px 14px; margin:16px 0; font-size:14px; word-break:break-all; }
+      .linkbox code { flex:1; font-family:ui-monospace,Menlo,monospace; font-size:13px; line-height:1.5; align-self:center; }
+      .linkbox button { flex:none; background:#0c7561; color:#fff; border:0; border-radius:8px; padding:8px 14px; font:600 14px "Manrope",system-ui,sans-serif; cursor:pointer; }
+      .linkbox button:hover { background:#095847; }
+      .agent { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:14px 0; }
+      .agent h3 { margin:0 0 8px; font-size:17px; color:var(--ink); }
+      .agent ol { margin:0; }
+      footer { max-width:720px; margin:0 auto; padding:0 22px 44px; font-size:14px; color:var(--ink-soft); }
+    </style>
+  </head>
+  <body>
+    <header><div class="in"><a href="/">Application Tracker</a><p>Connect your AI agents</p></div></header>
+    <main>
+      <h1>Connect your AI agents</h1>
+      <p class="lede">Your AI assistant can read your pipeline, add applications, and answer questions about your search. It connects through MCP — one link, your Google sign-in, and only your data.</p>
+
+      <h2>Step 1 — Copy the link</h2>
+      <p>This is the address your assistant connects to. Copy it exactly:</p>
+      <div class="linkbox"><code id="mcpUrl">https://application-tracker-mcp-web.azurewebsites.net/mcp</code><button type="button" id="copyBtn">Copy</button></div>
+
+      <h2>Step 2 — Add it in your assistant</h2>
+
+      <div class="agent">
+        <h3>Claude</h3>
+        <ol>
+          <li>Open Claude and go to <b>Settings → Connectors</b>.</li>
+          <li>Choose <b>Add custom connector</b>.</li>
+          <li>Paste the link above and save it.</li>
+          <li>Sign in with Google when asked — use the same Google account as your tracker.</li>
+        </ol>
+        <p>Works on web, desktop, and phone. The Free plan allows one custom connector.</p>
+      </div>
+
+      <div class="agent">
+        <h3>ChatGPT</h3>
+        <ol>
+          <li>You need a paid plan (Plus or higher), on the web — this does not work in the phone app.</li>
+          <li>Turn on <b>Developer Mode</b>, then go to <b>Plugins</b>.</li>
+          <li>Create a custom MCP connector and paste the link above.</li>
+          <li>Sign in with Google when asked — use the same Google account as your tracker.</li>
+        </ol>
+      </div>
+
+      <div class="agent">
+        <h3>Cursor</h3>
+        <ol>
+          <li>Open Cursor and go to <b>Settings → MCP</b>.</li>
+          <li>Choose <b>Add new global MCP server</b> and pick the URL type.</li>
+          <li>Paste the link above and save it.</li>
+          <li>Sign in with Google when the browser opens — use the same Google account as your tracker.</li>
+        </ol>
+      </div>
+
+      <h2>Step 3 — Ask it something</h2>
+      <p>Try one of these:</p>
+      <ul>
+        <li>“What applications do I have in interview right now?”</li>
+        <li>“Add an application: Operations Supervisor at Acme Logistics, Tampa, applied today.”</li>
+        <li>“Move my Ryder application to Interview.”</li>
+        <li>“How many applications have I submitted this month?”</li>
+      </ul>
+
+      <h2>What it can and can't do</h2>
+      <ul>
+        <li><b>Can:</b> list your applications, search them, open one, show your stats, add a new application, update a status, and delete one you ask it to remove.</li>
+        <li><b>Can't:</b> see anyone else's applications. Every person signs in with their own Google account, and the server only ever shows each person their own data.</li>
+        <li><b>Can't:</b> do anything without your sign-in. No password is shared with the assistant — Google handles the sign-in.</li>
+      </ul>
+
+      <h2>Disconnecting</h2>
+      <p>Remove the connector in the same place you added it (Claude: Settings → Connectors; ChatGPT: Plugins; Cursor: Settings → MCP). Removing it stops the assistant from reaching your tracker. Your applications stay in the tracker either way.</p>
+
+      <h2>Full guide</h2>
+      <p>Prefer a printable version? <a href="/mcp-guide.pdf">Download the step-by-step PDF guide</a> — it covers Claude and ChatGPT in detail, plus how adding applications works with Muse.</p>
+    </main>
+    <footer><a href="/">← Back to Application Tracker</a></footer>
+    <script>
+      document.getElementById("copyBtn").addEventListener("click", function () {
+        var url = document.getElementById("mcpUrl").textContent;
+        var btn = this;
+        function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 2000); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done, function () { btn.textContent = "Select and copy"; });
+        } else {
+          var r = document.createRange(); r.selectNodeContents(document.getElementById("mcpUrl"));
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          btn.textContent = "Select and copy";
+        }
+      });
+    </script>
+  </body>
+</html>

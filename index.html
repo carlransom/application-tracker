@@ -429,6 +429,12 @@
       .lp-ad:has(ins[data-ad-status="filled"]) { display: block; }
       .lp-footer a { color: var(--ink-faint); text-decoration: underline; text-underline-offset: 2px; }
       .lp-footer a:hover { color: var(--accent); }
+      .lp-agents { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; margin: 20px 0 16px; }
+      .lp-agent { display: inline-flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+      .lp-agent svg { width: 26px; height: 26px; flex: none; }
+      .lp-mcp-link { display: inline-block; font-size: 19px; font-weight: 600; color: var(--ink-soft); text-decoration: underline; text-decoration-color: #a8c92e; text-decoration-thickness: 3px; text-underline-offset: 7px; }
+      .lp-mcp-link:hover { color: var(--accent); }
+      .lp-agents-note { color: var(--ink-soft); font-size: 15px; max-width: 68ch; margin: 0; }
       .lp-shot { margin-top: 28px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 8px; box-shadow: var(--shadow); max-width: 460px; text-align: left; }
       .lp-shot-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; }
       .lp-shot-head b { font-size: 15px; }
@@ -962,7 +968,20 @@
           <div class="lp-faq-item"><b>Do I need to install anything?</b><p>No. It runs in the browser, and you can add it to your home screen to use it like an app.</p></div>
           <div class="lp-faq-item"><b>Is it really free?</b><p>Yes — free to use, no card required, and there is no paid plan today.</p></div>
           <div class="lp-faq-item"><b>Who made this?</b><p>Application Tracker was built by Carl Ransom while job hunting — the tracker he wanted for his own search, made available for anyone.</p></div>
+          <div class="lp-faq-item"><b>Can I connect an AI assistant?</b><p>Yes. Connect Claude, ChatGPT, or Cursor via MCP — your assistant can read your pipeline, add applications, and answer questions about your search. See <a href="/connect.html">Connect via MCP</a>.</p></div>
         </div>
+      </section>
+
+      <section class="lp-section" aria-labelledby="lpAgents">
+        <span class="lp-label">AI agents</span>
+        <h2 id="lpAgents">Connect your AI agents</h2>
+        <div class="lp-agents">
+          <span class="lp-agent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="4.5"/><ellipse cx="12" cy="12" rx="9" ry="4.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4.5" transform="rotate(120 12 12)"/></svg>ChatGPT / Codex</span>
+          <span class="lp-agent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg>Claude</span>
+          <span class="lp-agent"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3l7 9-7 9 3.5-9L4 3zm9.5 0L21 12l-7.5 9 2.2-9-2.2-9z"/></svg>Cursor</span>
+        </div>
+        <a class="lp-mcp-link" href="/connect.html">Connect via MCP</a>
+        <p class="lp-agents-note" style="margin-top:16px">Let your AI assistant read your pipeline, add applications, and answer questions about your search — signed in as you, and only your data.</p>
       </section>
 
       <section class="lp-closing" aria-labelledby="lpClose">
