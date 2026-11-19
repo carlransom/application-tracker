@@ -425,7 +425,8 @@
       .lp-closing .hero-note { color: var(--on-band-soft); }
       .lp-keywords { text-align: center; color: var(--ink-faint); font-size: 13px; padding: 0 22px 40px; margin: 0; }
       .lp-footer { text-align: center; color: var(--ink-faint); font-size: 13px; padding: 0 22px 44px; margin: 0; }
-      .lp-ad { max-width: 1060px; margin: 0 auto 40px; padding: 0 22px; }
+      .lp-ad { display: none; max-width: 1060px; margin: 0 auto 40px; padding: 0 22px; }
+      .lp-ad:has(ins[data-ad-status="filled"]) { display: block; }
       .lp-footer a { color: var(--ink-faint); text-decoration: underline; text-underline-offset: 2px; }
       .lp-footer a:hover { color: var(--accent); }
       .lp-shot { margin-top: 28px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 8px; box-shadow: var(--shadow); max-width: 460px; text-align: left; }
