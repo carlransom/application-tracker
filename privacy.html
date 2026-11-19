@@ -33,7 +33,7 @@
     <header><div class="in"><a href="/">Application Tracker</a><p>Privacy Policy</p></div></header>
     <main>
       <h1>Privacy Policy</h1>
-      <p class="lede"><b>Effective date:</b> November 18, 2026<br /><b>Operator / contact:</b> Carl Ransom — carl.ransom@gmail.com</p>
+      <p class="lede"><b>Effective date:</b> November 19, 2026<br /><b>Operator / contact:</b> Carl Ransom — carl.ransom@gmail.com</p>
       <p>Application Tracker keeps your job search in one place. This policy explains what the app collects, what it does not collect, and how to delete your data.</p>
 
       <h2>What we collect</h2>
@@ -51,10 +51,13 @@
 
       <h2>What we do NOT collect</h2>
       <ul>
-        <li>The app contains no advertising SDKs and no analytics code.</li>
+        <li>The signed-in app contains no advertising and no analytics code. Ads appear only on the public landing page, before you sign in — see "Advertising" below.</li>
         <li>We do not sell your personal information, and we do not use your application entries for advertising.</li>
         <li>We do not read your email, contacts, or anything outside what you type into the tracker.</li>
       </ul>
+
+      <h2>Advertising</h2>
+      <p>The public landing page (shown before you sign in) displays ads served by Google AdSense. Google may use cookies to show ads based on your visits to this and other sites, and to measure ad performance. Your application entries are never used for advertising, and ads never appear inside the signed-in app. You can opt out of personalized advertising at <a href="https://adssettings.google.com">adssettings.google.com</a>, and learn how Google uses data in advertising at <a href="https://policies.google.com/technologies/ads">policies.google.com/technologies/ads</a>.</p>
 
       <h2>How your data is used</h2>
       <ul>
@@ -67,6 +70,7 @@
       <ul>
         <li><b>Google Firebase (Authentication + Cloud Firestore):</b> stores your account and your application entries. Google processes this data under Google's terms and privacy policy. Your data is scoped to your user ID (<span style="font-family:monospace">users/{uid}/...</span>) so one signed-in user only sees their own entries.</li>
         <li><b>Google Sign-In:</b> if you sign in with Google, Google shares your name, email address, and profile picture with Firebase Authentication to create your account.</li>
+        <li><b>Google AdSense (landing page only):</b> serves the ads on the public landing page. Google may set cookies for advertising and measurement, as described in "Advertising" above. AdSense does not receive your application entries.</li>
         <li><b>Google Fonts:</b> the app loads font files from Google Fonts when pages load. Google may see your IP address as part of serving those files, as with any site that uses Google Fonts.</li>
       </ul>
       <p>No other third parties receive your data in the current build.</p>
